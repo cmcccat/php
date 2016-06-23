@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>阅读左</title>
+		<meta name="description" content="A sidebar menu as seen on the Google Nexus 7 website" />
+		<meta name="keywords" content="google nexus 7 menu, css transitions, sidebar, side menu, slide out menu" />
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<script src="js/modernizr.custom.js"></script>
+		<script type="text/javascript">
+		function startTime()
+		{
+		var xmlhttp;
+		if (window.XMLHttpRequest)
+		  {// code for IE7+, Firefox, Chrome, Opera, Safari
+		  xmlhttp=new XMLHttpRequest();
+		  }
+		else
+		  {// code for IE6, IE5
+		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+		xmlhttp.onreadystatechange=function()
+		  {
+		  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			{
+				if(xmlhttp.responseText<'0')
+				{
+					alert('您的余额不足，请充值！');
+					//　window.location.replace("recharge.html");
+					 top.location='recharge.html';
+				}
+			document.getElementById("myDiv").innerHTML="余额为：&nbsp;&nbsp;"+xmlhttp.responseText;
+			}
+		  }
+		xmlhttp.open("GET","time.php?t=" + Math.random(),true);
+		xmlhttp.send();
+		t=setTimeout('startTime()',10000);
+		}
+		</script>
+	</head>
+
+	<body onload="startTime()" style="font-family:Microsoft YAHEI">
+		<div class="container" style="font-family:Microsoft YAHEI">
+			<ul id="gn-menu" class="gn-menu-main">
+				<li class="gn-trigger">
+					<a class="gn-icon gn-icon-menu" style="font-family:Microsoft YAHEI"><span>操作</span></a>
+					<nav class="gn-menu-wrapper">
+						<div class="gn-scroller">
+							<ul class="gn-menu" style="font-family:Microsoft YAHEI">
+								<li><a class="gn-icon gn-icon-help" href="home.php"  target="_top">返回首页</a></li>
+								<li><a class="gn-icon gn-icon-article" href="read3.php" target="right">上一章节</a></li>
+								<li><a class="gn-icon gn-icon-article" href="read2.php" target="right">下一章节</a></li>
+							</ul>
+						</div><!-- /gn-scroller -->
+					</nav>
+				</li>
+				<li><a id="myDiv">123</a></li>				
+				<li></li>
+
+			</ul>
+
+		</div><!-- /container -->
+		<script src="js/classie.js"></script>
+		<script src="js/gnmenu.js"></script>
+		<script>
+			new gnMenu( document.getElementById( 'gn-menu' ) );
+		</script>
+	</body>
+</html>

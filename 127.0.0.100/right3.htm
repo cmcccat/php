@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>CSS3侧边栏手风琴菜单在线演示</title>
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+<link rel="shortcut icon" type="image/x-icon" href="C:\Users\Troy\Documents\在线数字图书馆\favicon.ico" media="screen" />
+<!-- Bootstrap -->
+<link rel="stylesheet" href="css/bootstrap.css">
+</head>
+
+<body>
+
+		</br>
+		</br>
+	
+	<?php
+	session_start();
+	$con = mysql_connect("localhost","cat","123456");
+	if (!$con)
+	  {
+	  die('Could not connect: ' . mysql_error());
+	  }
+	mysql_select_db("my_db", $con);
+	$result = mysql_query("SELECT * FROM User ORDER BY Count DESC");
+	?>
+	
+	
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="jumbotron">
+     	    <form method="post" action="regcheck.php" class="form-horizontal" role="form" style="font-size:15px">  	
+  <div class="form-group">
+	<label for="uct" class="col-sm-2  control-label" style="font-family:Microsoft YAHEI">用户名</label>
+		<?php
+			$row = mysql_fetch_array($result)
+		?>
+        <?php
+			echo $row['userCound'];
+        ?>
+		<?php 
+			echo ('1'); 
+		?>
+  </div>
+    <div class="form-group">
+      <label for="pwd" class="col-sm-2  control-label" style="font-family:Microsoft YAHEI">密码</label>
+
+  </div>
+    <div class="form-group">
+      <label for="pwd1" class="col-sm-2  control-label" style="font-family:Microsoft YAHEI;">确认密码</label>
+    
+
+  </div>
+	
+	<br>
+	
+  <div class="form-group">
+     <div class="col-sm-4 col-md-3 col-lg-3 col-lg-offset-2 col-md-offset-2 ">
+        <button type="submit" class="btn btn-default" onclick = "checkUser()" style="font-family:Microsoft YAHEI;">修改</button>
+	</div>
+   </div>   
+
+	<br>   
+	<br>
+	<br>
+	<br>
+	<br>
+	
+    </form>
+	</div>  
+    </div>
+  </div>
+</div>
+
+</body>
+
+</html>
